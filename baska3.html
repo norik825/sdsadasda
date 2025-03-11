@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements - A Tribute to Cristiano Ronaldo</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* 3D text effect on hover for headings */
+        h2:hover, h3:hover {
+            transform: perspective(500px) rotateX(15deg) scale(1.1);
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            color: #ff7b00;
+        }
+        
+        /* Desktop menu styles */
+        @media screen and (min-width: 980px) {
+            #header nav ul li.special {
+                display: none;
+            }
+            
+            #header nav:after {
+                content: '';
+                display: block;
+                clear: both;
+            }
+            
+            #header nav > ul {
+                display: flex;
+                justify-content: flex-end;
+            }
+            
+            #header nav > ul > li {
+                display: block;
+                margin-left: 1em;
+            }
+            
+            #header nav > ul > li > a {
+                color: rgba(255, 255, 255, 0.75);
+                text-decoration: none;
+                padding: 0 0.5em;
+                display: block;
+                font-size: 0.8em;
+                line-height: 2.5em;
+                transition: color 0.2s ease-in-out;
+            }
+            
+            #header nav > ul > li > a:hover {
+                color: #ffffff;
+            }
+            
+            #menu {
+                display: none !important;
+            }
+            
+            #header nav:before {
+                content: '';
+                display: block;
+                position: absolute;
+                right: 0;
+                top: 0;
+                height: 100%;
+            }
+            
+            #header nav:after {
+                clear: both;
+            }
+            
+            #desktop-menu {
+                display: flex !important;
+            }
+        }
+        
+        /* Hide desktop menu on mobile */
+        #desktop-menu {
+            display: none;
+        }
+
+        #header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5em;
+        }
+        
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        @media screen and (max-width: 736px) {
+            .navbar-logo img {
+                height: 30px;
+                margin-right: 10px;
+            }
+            
+            #header h1 {
+                font-size: 0.9em;
+            }
+        }
+        
+        /* Spotlight styles */
+        .spotlight {
+            display: flex;
+            align-items: center;
+            margin: 2rem 0;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .spotlight .image {
+            flex: 1;
+            min-width: 300px;
+            overflow: hidden;
+        }
+        
+        .spotlight .image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .spotlight .image:hover img {
+            transform: scale(1.1) rotate(2deg);
+            filter: saturate(1.5) contrast(1.1);
+        }
+        
+        .spotlight .content {
+            flex: 2;
+            padding: 2rem;
+        }
+        
+        .spotlight .content h2 {
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        .spotlight .content p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+        
+        @media screen and (max-width: 980px) {
+            .spotlight {
+                flex-direction: column;
+            }
+            
+            .spotlight .image {
+                width: 100%;
+                min-height: 300px;
+            }
+        }
+        
+        /* Footer Styles */
+        #new-footer {
+            background-color: #1e1e1e;
+            color: #fff;
+            padding: 60px 0 20px;
+            font-family: Arial, sans-serif;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
+        
+        .footer-column h3 {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #ff7b00;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #ff7b00;
+            padding-left: 5px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #333;
+            color: #fff;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+        }
+        
+        .social-icons a.instagram:hover {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            box-shadow: 0 5px 15px rgba(220, 39, 67, 0.4);
+        }
+        
+        .social-icons a.whatsapp:hover {
+            background-color: #25D366;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+        
+        .social-icons a.telegram:hover {
+            background-color: #0088cc;
+            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.4);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+            }
+            
+            .footer-column {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body class="landing is-preload">
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+
+        <!-- Header -->
+        <header id="header" class="alt" style="margin-top: 12px;">
+            <div class="navbar-logo" style="display: flex; align-items: center;">
+                <img src="images/logo.png" alt="CR7 Logo" style="height: 40px; margin-right: 15px;">
+                <h1 style="transform: translateX(90px);"><a href="index.html">A Tribute to Cristiano Ronaldo</a></h1>
+            </div>
+            <nav id="nav">
+                <ul>
+                    <li class="special">
+                        <a href="#menu" class="menuToggle"><span>Menu</span></a>
+                        <div id="menu">
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                              
+                                <li><a href="baska2.html">Clubs</a></li>
+                                <li><a href="baska3.html">Achievements</a></li>
+                                <li><a href="baska4.html">Facts</a></li>
+                                <li><a href="baska5.html">Brand Partners</a></li>
+                                <li><a href="index2.html">Landing Page</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Desktop Menu Script -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Create desktop menu
+                var nav = document.querySelector('#header nav');
+                var desktopMenu = document.createElement('ul');
+                desktopMenu.id = 'desktop-menu';
+                
+                // Add menu items
+                var menuItems = [
+                    {text: 'Home', href: 'index.html'},
+                
+                    {text: 'Clubs', href: 'baska2.html'},
+                    {text: 'Achievements', href: 'baska3.html'},
+                    {text: 'Facts', href: 'baska4.html'},
+                    {text: 'Brand Partners', href: 'baska5.html'},
+                    {text: 'Landing Page', href: 'index2.html'}
+                ];
+                
+                menuItems.forEach(function(item) {
+                    var li = document.createElement('li');
+                    var a = document.createElement('a');
+                    a.href = item.href;
+                    a.textContent = item.text;
+                    li.appendChild(a);
+                    desktopMenu.appendChild(li);
+                });
+                
+                nav.appendChild(desktopMenu);
+            });
+        </script>
+
+        <!-- Main Content -->
+        <section  class="wrapper style1">
+            <div class="inner">
+                <header class="major">
+                    <h2 class="neon-text">Achievements & Records</h2>
+                    <p>The extraordinary accomplishments of a football legend</p>
+                </header>
+                <p style="opacity: 0;"">data-brand <br>sadsd</p>  
+                <!-- First Spotlight -->
+                
+                <section class="spotlight">
+                    <div class="image"><img src="images/Ronaldo_Euro.jpg" alt="Ronaldo and Portugal winning Euro title" /></div>
+                    <div class="content">
+                        <h2>First International Trophy</h2>
+                        <p>Portugal won their very first Euro title in 2016 with a dramatic win over the host team, France.
+                            Ronaldo was injured after just 25 minutes of the final game which made him leave the pitch in tears. It was a
+                            closely-fought contest and Portugal beat France thanks to Eder's late-minute winner in the 109 minute.
+                            Ronaldo played a key role despite being forced to leave the pitch and remained as a hero of the game.
+                        </p>
+                    </div>
+                </section>
+                
+                <p style="opacity: 0;"">data-brand <br>sadsd</p> 
+                <!-- Second Spotlight -->
+                <section class="spotlight">
+                    <div class="image"><img src="images/Ronaldo_Ballon_d_Or.jpg" alt="Ronaldo and his Ballon d'Or" /></div>
+                    <div class="content">
+                        <h2>5-time World's Best Football Player Award Winner</h2>
+                        <p>Cristiano Ronaldo won his first Ballon d'Or award at the age of 23 in 2008 and he is the last Ballon d'Or winner in Premier League so far.
+                        In 2013, 2014, 2016, and 2017, he won this award, making him the player with second most Ballon d'Or. Apart from that, the battle between Cristiano Ronaldo and Lionel Messi who won the same award 7 times
+                        is one of the most famous and enduring rivalries in the history of the sport.
+                        </p>
+                    </div>
+                </section>
+                
+                <p style="opacity: 0;"">data-brand <br>sadsd</p> 
+                <!-- Third Spotlight -->
+                <section class="spotlight">
+                    <div class="image"><img src="images/Ronaldo_UCL.jpg" alt="Ronaldo and Champions League" /></div>
+                    <div class="content">
+                        <h2>Mr. Champions League</h2>
+                        <p>It can be reasonably assumed that Ronaldo is the King of Champions League according to his records and performance in this competition.
+                            He is all-time leading goalscorer with 140 goals alongside with the record of the player with most assists in the
+                            history of competition. Furthermore to that, he scored most goals in the finals other than any players who participated
+                            in UCL. Last but not the least, he won UCL 5-times together with 8 other players, meaning that only 9 players in this World
+                            have ever won this prestigious title quintuple.
+                        </p>
+                    </div>
+                </section>
+                
+                <p style="opacity: 0;"">data-brand <br>sadsd</p> 
+                <!-- Fourth Spotlight -->
+                <section class="spotlight">
+                    <div class="image"><img src="images/Ronaldo_Family.jpg" alt="Ronaldo and his family"/></div>
+                    <div class="content">
+                        <h2>Family Life</h2>
+                        <p>To date, Ronaldo has five children, with three of the children born to two surrogate mothers. 
+                            His first son, Cristiano Ronaldo Jr, 11, was born on June 17, 2010, in the United States.
+                             Cristiano Jr's family nickname is Cristianinho, which means "little Cristiano". Ronaldo is living together with his girlfriend Georgina
+                            in Saudi Arabia. The couple says the birth of their baby girl has "given us the strength to live this moment."
+
+                            Cristiano and Georgina announced they were expecting twins in October in 2021.
+
+                            But the Manchester United ace revealed that their baby boy sadly passed away as celebrities paid tributes online.
+                            
+                            On May 7, the couple revealed they have named the baby girl Bella.</p>
+                    </div>
+                </section>
+                
+                <!-- Additional Achievements Section -->
+                <section class="additional-achievements" style="margin-top: 4rem;">
+                    <h3>More Remarkable Achievements</h3>
+                    
+                    <div class="achievement-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                        <!-- Achievement 1 -->
+                        <div class="achievement-card" style="background: rgba(0, 0, 0, 0.2); padding: 2rem; border-radius: 15px; transition: all 0.3s ease;">
+                            <h4>International Goal Record</h4>
+                            <p>Ronaldo holds the world record for most international goals scored (127 and counting), surpassing Ali Daei's previous record of 109 goals.</p>
+                        </div>
+                        
+                        <!-- Achievement 2 -->
+                        <div class="achievement-card" style="background: rgba(0, 0, 0, 0.2); padding: 2rem; border-radius: 15px; transition: all 0.3s ease;">
+                            <h4>Most Champions League Goals</h4>
+                            <p>With 140 goals in the UEFA Champions League, Ronaldo is the competition's all-time top scorer, well ahead of his nearest rival.</p>
+                        </div>
+                        
+                        <!-- Achievement 3 -->
+                        <div class="achievement-card" style="background: rgba(0, 0, 0, 0.2); padding: 2rem; border-radius: 15px; transition: all 0.3s ease;">
+                            <h4>Club Titles</h4>
+                            <p>Ronaldo has won 32 major trophies in his career, including 7 league titles across England, Spain, and Italy, and 5 Champions League titles.</p>
+                        </div>
+                        
+                        <!-- Achievement 4 -->
+                        <div class="achievement-card" style="background: rgba(0, 0, 0, 0.2); padding: 2rem; border-radius: 15px; transition: all 0.3s ease;">
+                            <h4>Goal Scoring Machine</h4>
+                            <p>Ronaldo is the first player in history to score 800+ career goals in official matches and continues to add to his tally.</p>
+                        </div>
+                        
+                        <!-- Achievement 5 -->
+                        <div class="achievement-card" style="background: rgba(0, 0, 0, 0.2); padding: 2rem; border-radius: 15px; transition: all 0.3s ease;">
+                            <h4>Most Followed Person</h4>
+                            <p>With over 600 million followers on Instagram, Ronaldo is the most followed individual on the platform, showcasing his global influence.</p>
+                        </div>
+                        
+                        <!-- Achievement 6 -->
+                        <div class="achievement-card" style="background: rgba(0, 0, 0, 0.2); padding: 2rem; border-radius: 15px; transition: all 0.3s ease;">
+                            <h4>Nations League Winner</h4>
+                            <p>Ronaldo led Portugal to victory in the inaugural UEFA Nations League in 2019, adding another international trophy to his collection.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <script>
+                    // Add hover effect to achievement cards
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const cards = document.querySelectorAll('.achievement-card');
+                        
+                        cards.forEach(card => {
+                            card.addEventListener('mouseenter', function() {
+                                this.style.transform = 'translateY(-10px)';
+                                this.style.boxShadow = '0 15px 30px rgba(255, 123, 0, 0.3)';
+                                this.style.background = 'rgba(20, 20, 20, 0.8)';
+                            });
+                            
+                            card.addEventListener('mouseleave', function() {
+                                this.style.transform = 'translateY(0)';
+                                this.style.boxShadow = 'none';
+                                this.style.background = 'rgba(0, 0, 0, 0.2)';
+                            });
+                        });
+                    });
+                </script>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="new-footer">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>About CR7</h3>
+                    <ul>
+                        <li><a href="#">Biography</a></li>
+                        <li><a href="baska2.html">Career</a></li>
+                        <li><a href="baska4.html">Fun Facts</a></li>
+                        <li><a href="baska3.html">Achievements</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Get Help</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Feedback</a></li>
+                        <li><a href="#">Site Map</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+               
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/nurwxsc?igsh=NDRnbXZha2FsZGUx&utm_source=qr" target="_blank" class="instagram" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/87059688671" target="_blank" class="whatsapp" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://t.me/nurwxcs" target="_blank" class="telegram" aria-label="Telegram">
+                        <i class="fab fa-telegram-plane"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</body>
+</html>
