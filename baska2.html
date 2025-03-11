@@ -304,6 +304,101 @@
                 margin-bottom: 30px;
             }
         }
+        
+        /* Club journey styles */
+        .club-journey {
+            margin-top: 3rem;
+        }
+        
+        .club-journey h3 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #ff7b00;
+        }
+        
+        .club-journey p {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+        }
+        
+        .club-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .club-card {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .club-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 123, 0, 0.3);
+        }
+        
+        .club-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .club-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .club-card:hover .club-image img {
+            transform: scale(1.1);
+        }
+        
+        .club-info {
+            padding: 1.5rem;
+        }
+        
+        .club-info h4 {
+            color: #ff7b00;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .club-info p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin: 0;
+            text-align: left;
+        }
+        
+        /* Mobile responsiveness for club cards */
+        @media screen and (max-width: 736px) {
+            .club-cards {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .club-image {
+                height: 200px;
+            }
+            
+            .club-info {
+                padding: 1rem;
+            }
+            
+            .club-info h4 {
+                font-size: 1.1rem;
+            }
+            
+            .club-info p {
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
 <body class="landing is-preload">
@@ -412,27 +507,78 @@
                     </ul>
                 </div>
                 
-                <div class="club-journey" style="margin-top: 3rem; text-align: left;">
-                    <h3>The Journey Through Elite Football Clubs</h3>
-                    <p>Cristiano Ronaldo's career trajectory has been nothing short of extraordinary. From his humble beginnings at Sporting CP to becoming a global icon, his journey through some of the world's most prestigious clubs has cemented his legacy as one of football's greatest players.</p>
+                <!-- New Club Journey with images -->
+                <div class="club-journey">
+                    <h3>THE JOURNEY THROUGH ELITE FOOTBALL CLUBS</h3>
+                    <p>Cristiano Ronaldo's extraordinary career has taken him from humble beginnings to global icon status through some of the world's most prestigious clubs.</p>
                     
-                    <h4 style="margin-top: 2rem;">Sporting CP: Where It All Began</h4>
-                    <p>At just 16 years old, Ronaldo became the first player to play for Sporting's under-16, under-17, under-18, B team, and first team all in one season. His exceptional speed, dribbling skills, and flair quickly caught the attention of Europe's elite clubs.</p>
-                    
-                    <h4 style="margin-top: 2rem;">Manchester United: The Transformation</h4>
-                    <p>Under Sir Alex Ferguson's guidance, Ronaldo transformed from a flashy winger into a lethal goalscorer. He won his first Ballon d'Or at United in 2008 after helping the club win the Champions League, scoring in the final against Chelsea.</p>
-                    
-                    <h4 style="margin-top: 2rem;">Real Madrid: The Golden Era</h4>
-                    <p>At Real Madrid, Ronaldo reached unprecedented heights, becoming the club's all-time top scorer with 450 goals in just 438 appearances. He won four Champions League titles with Los Blancos and established himself as one of the greatest players in football history.</p>
-                    
-                    <h4 style="margin-top: 2rem;">Juventus: Conquering Italy</h4>
-                    <p>Ronaldo's move to Juventus brought immediate success as he helped the club continue their domestic dominance while attempting to secure European glory. He scored over 100 goals for the Italian giants in just three seasons.</p>
-                    
-                    <h4 style="margin-top: 2rem;">Return to Manchester United</h4>
-                    <p>His emotional return to Old Trafford in 2021 saw him continue his goalscoring prowess despite the team's struggles, proving that his abilities remained world-class even in his late 30s.</p>
-                    
-                    <h4 style="margin-top: 2rem;">Al Nassr: New Horizons</h4>
-                    <p>Ronaldo's move to Saudi Arabia's Al Nassr marked a new chapter in his career, bringing his star power to develop football in the Middle East while continuing to score goals at an impressive rate.</p>
+                    <div class="club-cards">
+                        <!-- Sporting CP -->
+                        <div class="club-card" data-aos="fade-up">
+                            <div class="club-image">
+                                <img src="sporting.jpg" alt="Ronaldo at Sporting CP">
+                            </div>
+                            <div class="club-info">
+                                <h4>SPORTING CP: WHERE IT ALL BEGAN</h4>
+                                <p>At just 16, Ronaldo became the first player to play for Sporting's under-16 through first team all in one season.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Manchester United -->
+                        <div class="club-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="club-image">
+                                <img src="mu.jpg" alt="Ronaldo at Manchester United">
+                            </div>
+                            <div class="club-info">
+                                <h4>MANCHESTER UNITED: THE TRANSFORMATION</h4>
+                                <p>Under Ferguson's guidance, Ronaldo transformed from flashy winger to lethal goalscorer, winning his first Ballon d'Or in 2008.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Real Madrid -->
+                        <div class="club-card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="club-image">
+                                <img src="real.jpg" alt="Ronaldo at Real Madrid">
+                            </div>
+                            <div class="club-info">
+                                <h4>REAL MADRID: THE GOLDEN ERA</h4>
+                                <p>At Real Madrid, Ronaldo reached unprecedented heights with 450 goals in 438 appearances and four Champions League titles.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Juventus -->
+                        <div class="club-card" data-aos="fade-up" data-aos-delay="300">
+                            <div class="club-image">
+                                <img src="juventus.jpg" alt="Ronaldo at Juventus">
+                            </div>
+                            <div class="club-info">
+                                <h4>JUVENTUS: CONQUERING ITALY</h4>
+                                <p>Ronaldo scored over 100 goals for Juventus in just three seasons, helping them continue their domestic dominance.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Return to Man United -->
+                        <div class="club-card" data-aos="fade-up" data-aos-delay="400">
+                            <div class="club-image">
+                                <img src="mu.jpg" alt="Ronaldo's return to Manchester United">
+                            </div>
+                            <div class="club-info">
+                                <h4>RETURN TO MANCHESTER UNITED</h4>
+                                <p>His emotional return to Old Trafford in 2021 saw him continue his goalscoring prowess despite the team's struggles.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Al Nassr -->
+                        <div class="club-card" data-aos="fade-up" data-aos-delay="500">
+                            <div class="club-image">
+                                <img src="alnassr.jpg" alt="Ronaldo at Al Nassr">
+                            </div>
+                            <div class="club-info">
+                                <h4>AL NASSR: NEW HORIZONS</h4>
+                                <p>Ronaldo's move to Saudi Arabia marked a new chapter, bringing his star power to develop football in the Middle East.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
